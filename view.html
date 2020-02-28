@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script></head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>POWER SQ</h1>
+        <p>Product Catalogue</p>
+        <p><a href="javascript:history.back()"><< Back</a></p>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="input-group mb-3" id="stickForm">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+        <input type="text" id="myInput" onkeyup="myFunction('model')" class="form-control" placeholder="Search By Model..." title="Type in a model">
+        <input type="text" id="myInputB" onkeyup="myFunction('brand')" class="form-control" placeholder="Search By Brand..." title="Type in a brand">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button" onclick="location.href='add.html'"><i class="fas fa-plus"></i>&nbsp;Add</button>
+        </div>
+    </div>
+</div>
+<div class="pl-4 pr-4">
+    <div id="table-div" class="table-responsive-sm table-sm">
+        <table id="productTable" class="table table-hover table-bordered table-responsive">
+            <thead>
+            <tr>
+                <th>Action</th>
+                <th>#</th>
+                <th>model</th>
+                <th>brand</th>
+                <th>category</th>
+                <th>product</th>
+                <th>upc</th>
+                <th>title</th>
+                <th>cost</th>
+                <th>price</th>
+                <th>price_before</th>
+                <th>price1</th>
+                <th>price1_start</th>
+                <th>price1_end</th>
+                <th>price2</th>
+                <th>price2_start</th>
+                <th>price2_end</th>
+                <th>discontinued</th>
+                <th>size</th>
+                <th>technology</th>
+                <th>dimension withstand</th>
+                <th>dimension withoutstand</th>
+                <th>dimension stand</th>
+                <th>dimension package</th>
+                <th>weight</th>
+                <th>weight stand</th>
+                <th>weight package</th>
+                <th>releasedate</th>
+                <th>feature display resolution</th>
+                <th>feature display type</th>
+                <th>feature display refreshrate</th>
+                <th>feature display backlight</th>
+                <th>feature display more</th>
+                <th>feature assistant</th>
+                <th>feature audio</th>
+                <th>feature picture</th>
+                <th>feature connectivity</th>
+                <th>feature mounting</th>
+                <th>feature ports</th>
+                <th>feature power</th>
+                <th>warranty</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function() {
+        var api = "powersqapi/v1/Api.php?apicall=getproducts";
+        $.getJSON( api, {
+            format: "json"
+        })
+            .done(function( data ) {
+                console.log(data.products[0].model);
+                var products = data.products;
+                console.log(products);
+
+                $.each(products, function(i, item) {
+                    $('#productTable > tbody:last-child').append('<tr> <td> <a title="Edit" href="edit.html?id='+ item.id +'"<i class="fas fa-edit"></i></a> </td><td>'+
+                    item.id +'</td><td>' +
+                    item.model +'</td><td>' +
+                    item.brand +'</td><td>' +
+                    item.category +'</td><td>' +
+                    item.product +'</td><td>' +
+                    item.upc +'</td><td>' +
+                    item.title +'</td><td>' +
+                    item.cost +'</td><td>' +
+                    item.price +'</td><td>' +
+                    item.price_before +'</td><td>' +
+                    item.price1 +'</td><td>' +
+                    item.price1_start +'</td><td>' +
+                    item.price1_end +'</td><td>' +
+                    item.price2 +'</td><td>' +
+                    item.price2_start +'</td><td>' +
+                    item.price2_end +'</td><td>' +
+                    item.discontinued +'</td><td>' +
+                    item.size +'</td><td>' +
+                    item.technology +'</td><td>' +
+                    item.dimension_withstand +'</td><td>' +
+                    item.dimension_withoutstand +'</td><td>' +
+                    item.dimension_stand +'</td><td>' +
+                    item.dimension_package +'</td><td>' +
+                    item.weight +'</td><td>' +
+                    item.weight_stand +'</td><td>' +
+                    item.weight_package +'</td><td>' +
+                    item.releasedate +'</td><td>' +
+                    $.trim(item.feature_display_resolution) +'</td><td>' +
+                    $.trim(item.feature_display_type) +'</td><td>' +
+                    $.trim(item.feature_display_refreshrate) +'</td><td>' +
+                    $.trim(item.feature_display_backlight) +'</td><td>' +
+                    $.trim(item.feature_display_more) +'</td><td>' +
+                    $.trim(item.feature_assistant) +'</td><td>' +
+                    $.trim(item.feature_audio) +'</td><td>' +
+                    $.trim(item.feature_picture) +'</td><td>' +
+                    $.trim(item.feature_connectivity) +'</td><td>' +
+                    $.trim(item.feature_mounting) +'</td><td>' +
+                    $.trim(item.feature_ports) +'</td><td>' +
+                    $.trim(item.feature_power) +'</td><td>' +
+                    $.trim(item.warranty) +'</td></tr>');
+
+                });
+            })
+    });
+</script>
+<script>
+    function edit(id){
+        location.href = 'edit.html?id='+ id;
+    }
+
+    function myFunction(type) {
+        var input, filter, table, tr, td, i, index;
+
+        if(type == 'model'){
+            index = 2;
+            input = document.getElementById("myInput");
+            document.getElementById("myInputB").value="";
+        }
+        else if (type == 'brand'){
+            index = 3;
+            input = document.getElementById("myInputB");
+            document.getElementById("myInput").value="";
+        }
+
+        filter = input.value.toUpperCase();
+        table = document.getElementById("productTable");
+        tr = table.getElementsByTagName("tr");
+
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[index];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
