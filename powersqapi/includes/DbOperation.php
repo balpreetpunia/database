@@ -25,16 +25,16 @@ class DbOperation
     */
     function createProduct($model, $brand, $category, $producttype, $upc, $title, $cost, $price, $price_before, $price1, $price1_start, $price1_end, $price2, $price2_start, $price2_end,
                            $discontinued, $size, $technology, $dimension_withstand, $dimension_withoutstand, $dimension_stand, $dimension_package, $weight, $weight_stand, $weight_package, $releasedate,
-                           $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_display_more, $feature_assistant, $feature_audio,
-                           $feature_picture, $feature_connectivity, $feature_mounting, $feature_ports, $feature_power, $warranty, $description){
+                           $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_backlight_dimming, $series, $feature_assistant, $feature_audio,
+                           $feature_picture, $feature_connectivity, $feature_hdr, $feature_mounting, $feature_game, $feature_power, $warranty, $description){
         $stmt = $this->con->prepare("INSERT INTO products (model,brand,category,product,upc,title,cost,price,price_before,price1,price1_start,price1_end,price2,price2_start,price2_end,discontinued,
         size,technology,dimension_withstand,dimension_withoutstand,dimension_stand,dimension_package,weight,weight_stand,weight_package,releasedate,feature_display_resolution,feature_display_type,
-        feature_display_refreshrate,feature_display_backlight,feature_display_more,feature_assistant,feature_audio,feature_picture,feature_connectivity,feature_mounting,feature_ports,feature_power,warranty, description) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssddddssdssissssssdddsssssssssssssss", $model, $brand, $category, $producttype, $upc, $title, $cost, $price, $price_before, $price1, $price1_start, $price1_end, $price2, $price2_start,
+        feature_display_refreshrate,feature_display_backlight,feature_backlight_dimming,series,feature_assistant,feature_audio,feature_picture,feature_connectivity,feature_hdr,feature_mounting,feature_game,feature_power,warranty, description) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssddddssdssissssssdddsssssssssssssssss", $model, $brand, $category, $producttype, $upc, $title, $cost, $price, $price_before, $price1, $price1_start, $price1_end, $price2, $price2_start,
             $price2_end, $discontinued, $size, $technology, $dimension_withstand, $dimension_withoutstand, $dimension_stand, $dimension_package, $weight, $weight_stand, $weight_package, $releasedate,
-            $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_display_more, $feature_assistant, $feature_audio, $feature_picture,
-            $feature_connectivity, $feature_mounting, $feature_ports, $feature_power, $warranty, $description);
+            $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_backlight_dimming, $series, $feature_assistant, $feature_audio, $feature_picture,
+            $feature_connectivity, $feature_hdr, $feature_mounting, $feature_game, $feature_power, $warranty, $description);
         if($stmt->execute())
             return true;
         return false;
@@ -47,12 +47,12 @@ class DbOperation
     function getProducts(){
         $stmt = $this->con->prepare("SELECT id, model,brand,category,product,upc,title,cost,price,price_before,price1,price1_start,price1_end,price2,price2_start,price2_end,discontinued,
         size,technology,dimension_withstand,dimension_withoutstand,dimension_stand,dimension_package,weight,weight_stand,weight_package,releasedate,feature_display_resolution,feature_display_type,
-        feature_display_refreshrate,feature_display_backlight,feature_display_more,feature_assistant,feature_audio,feature_picture,feature_connectivity,feature_mounting,feature_ports,feature_power,warranty FROM products");
+        feature_display_refreshrate,feature_display_backlight,feature_backlight_dimming,series,feature_assistant,feature_audio,feature_picture,feature_connectivity,feature_hdr,feature_mounting,feature_game,feature_power,warranty FROM products");
         $stmt->execute();
         $stmt->bind_result($id, $model, $brand, $category, $producttype, $upc, $title, $cost, $price, $price_before, $price1, $price1_start, $price1_end, $price2, $price2_start,
             $price2_end, $discontinued, $size, $technology, $dimension_withstand, $dimension_withoutstand, $dimension_stand, $dimension_package, $weight, $weight_stand, $weight_package, $releasedate,
-            $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_display_more, $feature_assistant, $feature_audio, $feature_picture,
-            $feature_connectivity, $feature_mounting, $feature_ports, $feature_power, $warranty);
+            $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_backlight_dimming, $series, $feature_assistant, $feature_audio, $feature_picture,
+            $feature_connectivity, $feature_hdr, $feature_mounting, $feature_game, $feature_power, $warranty);
 
         $products = array();
 
@@ -89,13 +89,15 @@ class DbOperation
             $product['feature_display_type'] = $feature_display_type;
             $product['feature_display_refreshrate'] = $feature_display_refreshrate;
             $product['feature_display_backlight'] = $feature_display_backlight;
-            $product['feature_display_more'] = $feature_display_more;
+            $product['feature_backlight_dimming'] = $feature_backlight_dimming;
+            $product['series'] = $series;
             $product['feature_assistant'] = $feature_assistant;
             $product['feature_audio'] = $feature_audio;
             $product['feature_picture'] = $feature_picture;
             $product['feature_connectivity'] = $feature_connectivity;
+            $product['feature_hdr'] = $feature_hdr;
             $product['feature_mounting'] = $feature_mounting;
-            $product['feature_ports'] = $feature_ports;
+            $product['feature_game'] = $feature_game;
             $product['feature_power'] = $feature_power;
             $product['warranty'] = $warranty;
 
@@ -112,13 +114,13 @@ class DbOperation
     function getProductById($id){
         $stmt = $this->con->prepare("SELECT id, model,brand,category,product,upc,title,cost,price,price_before,price1,price1_start,price1_end,price2,price2_start,price2_end,discontinued,
         size,technology,dimension_withstand,dimension_withoutstand,dimension_stand,dimension_package,weight,weight_stand,weight_package,releasedate,feature_display_resolution,feature_display_type,
-        feature_display_refreshrate,feature_display_backlight,feature_display_more,feature_assistant,feature_audio,feature_picture,feature_connectivity,feature_mounting,feature_ports,feature_power,warranty, description  FROM products WHERE id = ?");
+        feature_display_refreshrate,feature_display_backlight,feature_backlight_dimming,series,feature_assistant,feature_audio,feature_picture,feature_connectivity,feature_hdr,feature_mounting,feature_game,feature_power,warranty, description  FROM products WHERE id = ?");
         $stmt->bind_param("i",$id);
         $stmt->execute();
         $stmt->bind_result($id, $model, $brand, $category, $producttype, $upc, $title, $cost, $price, $price_before, $price1, $price1_start, $price1_end, $price2, $price2_start,
             $price2_end, $discontinued, $size, $technology, $dimension_withstand, $dimension_withoutstand, $dimension_stand, $dimension_package, $weight, $weight_stand, $weight_package, $releasedate,
-            $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_display_more, $feature_assistant, $feature_audio, $feature_picture,
-            $feature_connectivity, $feature_mounting, $feature_ports, $feature_power, $warranty, $description);
+            $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_backlight_dimming, $series, $feature_assistant, $feature_audio, $feature_picture,
+            $feature_connectivity, $feature_hdr, $feature_mounting, $feature_game, $feature_power, $warranty, $description);
 
         $products = array();
 
@@ -155,13 +157,15 @@ class DbOperation
             $product['feature_display_type'] = $feature_display_type;
             $product['feature_display_refreshrate'] = $feature_display_refreshrate;
             $product['feature_display_backlight'] = $feature_display_backlight;
-            $product['feature_display_more'] = $feature_display_more;
+            $product['feature_backlight_dimming'] = $feature_backlight_dimming;
+            $product['series'] = $series;
             $product['feature_assistant'] = $feature_assistant;
             $product['feature_audio'] = $feature_audio;
             $product['feature_picture'] = $feature_picture;
             $product['feature_connectivity'] = $feature_connectivity;
+            $product['feature_hdr'] = $feature_hdr;
             $product['feature_mounting'] = $feature_mounting;
-            $product['feature_ports'] = $feature_ports;
+            $product['feature_game'] = $feature_game;
             $product['feature_power'] = $feature_power;
             $product['warranty'] = $warranty;
             $product['description'] = $description;
@@ -179,16 +183,16 @@ class DbOperation
     */
     function updateProduct($id, $model, $brand, $category, $product, $upc, $title, $cost, $price, $price_before, $price1, $price1_start, $price1_end, $price2, $price2_start, $price2_end,
                            $discontinued, $size, $technology, $dimension_withstand, $dimension_withoutstand, $dimension_stand, $dimension_package, $weight, $weight_stand, $weight_package, $releasedate,
-                           $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_display_more, $feature_assistant, $feature_audio,
-                           $feature_picture, $feature_connectivity, $feature_mounting, $feature_ports, $feature_power, $warranty, $description){
+                           $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_backlight_dimming, $series, $feature_assistant, $feature_audio,
+                           $feature_picture, $feature_connectivity, $feature_hdr, $feature_mounting, $feature_game, $feature_power, $warranty, $description){
         $stmt = $this->con->prepare("UPDATE products SET model = ?, brand = ?, category = ?, product = ?, upc = ?, title = ?, cost = ?, price = ?, price_before = ?, price1 = ?, 
 price1_start = ?, price1_end = ?, price2 = ?, price2_start = ?, price2_end = ?, discontinued = ?, size = ?, technology = ?, dimension_withstand = ?, dimension_withoutstand = ?, dimension_stand = ?, 
 dimension_package = ?, weight = ?, weight_stand = ?, weight_package = ?, releasedate = ?, feature_display_resolution = ?, feature_display_type = ?, feature_display_refreshrate = ?, feature_display_backlight = ?, 
-feature_display_more = ?, feature_assistant = ?, feature_audio = ?, feature_picture = ?, feature_connectivity = ?, feature_mounting = ?, feature_ports = ?, feature_power = ?, warranty = ?, description = ? WHERE id = ?");
-        $stmt->bind_param("ssssssddddssdssissssssdddsssssssssssssssi", $model, $brand, $category, $product, $upc, $title, $cost, $price, $price_before, $price1, $price1_start, $price1_end, $price2, $price2_start, $price2_end,
+feature_backlight_dimming = ?, series = ?, feature_assistant = ?, feature_audio = ?, feature_picture = ?, feature_connectivity = ?, feature_hdr = ?,feature_mounting = ?, feature_game = ?, feature_power = ?, warranty = ?, description = ? WHERE id = ?");
+        $stmt->bind_param("ssssssddddssdssissssssdddsssssssssssssssssi", $model, $brand, $category, $product, $upc, $title, $cost, $price, $price_before, $price1, $price1_start, $price1_end, $price2, $price2_start, $price2_end,
             $discontinued, $size, $technology, $dimension_withstand, $dimension_withoutstand, $dimension_stand, $dimension_package, $weight, $weight_stand, $weight_package, $releasedate,
-            $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_display_more, $feature_assistant, $feature_audio,
-            $feature_picture, $feature_connectivity, $feature_mounting, $feature_ports, $feature_power, $warranty, $description, $id);
+            $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_backlight_dimming, $series, $feature_assistant, $feature_audio,
+            $feature_picture, $feature_connectivity, $feature_hdr, $feature_mounting, $feature_game, $feature_power, $warranty, $description, $id);
         if($stmt->execute())
             return true;
         return false;
@@ -213,13 +217,13 @@ feature_display_more = ?, feature_assistant = ?, feature_audio = ?, feature_pict
     function getProductByModel($model){
         $stmt = $this->con->prepare("SELECT id, model,brand,category,product,upc,title,cost,price,price_before,price1,price1_start,price1_end,price2,price2_start,price2_end,discontinued,
         size,technology,dimension_withstand,dimension_withoutstand,dimension_stand,dimension_package,weight,weight_stand,weight_package,releasedate,feature_display_resolution,feature_display_type,
-        feature_display_refreshrate,feature_display_backlight,feature_display_more,feature_assistant,feature_audio,feature_picture,feature_connectivity,feature_mounting,feature_ports,feature_power,warranty, description  FROM products WHERE model = ?");
+        feature_display_refreshrate,feature_display_backlight,feature_backlight_dimming,series,feature_assistant,feature_audio,feature_picture,feature_connectivity,feature_hdr,feature_mounting,feature_game,feature_power,warranty, description  FROM products WHERE model = ?");
         $stmt->bind_param("s",$model);
         $stmt->execute();
         $stmt->bind_result($id, $model, $brand, $category, $producttype, $upc, $title, $cost, $price, $price_before, $price1, $price1_start, $price1_end, $price2, $price2_start,
             $price2_end, $discontinued, $size, $technology, $dimension_withstand, $dimension_withoutstand, $dimension_stand, $dimension_package, $weight, $weight_stand, $weight_package, $releasedate,
-            $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_display_more, $feature_assistant, $feature_audio, $feature_picture,
-            $feature_connectivity, $feature_mounting, $feature_ports, $feature_power, $warranty, $description);
+            $feature_display_resolution, $feature_display_type, $feature_display_refreshrate, $feature_display_backlight, $feature_backlight_dimming, $series, $feature_assistant, $feature_audio, $feature_picture,
+            $feature_connectivity, $feature_hdr, $feature_mounting, $feature_game, $feature_power, $warranty, $description);
 
         $products = array();
 
@@ -256,13 +260,15 @@ feature_display_more = ?, feature_assistant = ?, feature_audio = ?, feature_pict
             $product['feature_display_type'] = $feature_display_type;
             $product['feature_display_refreshrate'] = $feature_display_refreshrate;
             $product['feature_display_backlight'] = $feature_display_backlight;
-            $product['feature_display_more'] = $feature_display_more;
+            $product['feature_backlight_dimming'] = $feature_backlight_dimming;
+            $product['series'] = $series;
             $product['feature_assistant'] = $feature_assistant;
             $product['feature_audio'] = $feature_audio;
             $product['feature_picture'] = $feature_picture;
             $product['feature_connectivity'] = $feature_connectivity;
+            $product['feature_hdr'] = $feature_hdr;
             $product['feature_mounting'] = $feature_mounting;
-            $product['feature_ports'] = $feature_ports;
+            $product['feature_game'] = $feature_game;
             $product['feature_power'] = $feature_power;
             $product['warranty'] = $warranty;
             $product['description'] = $description;

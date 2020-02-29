@@ -247,53 +247,139 @@
             <div class="col-8">
                 <select id="feature_display_resolution" name="feature_display_resolution" class="form-control">
                     <option value="">Select </option>
-                    <option value="720p HD">720p HD</option>
-                    <option value="1080p HD">1080p HD</option>
-                    <option value="4K UHD">4K UHD</option>
-                    <option value="8K UHD">8K UHD</option>
+                    <option value="1366 X 768">1366 X 768</option>
+                    <option value="1920 X 1080">1920 X 1080</option>
+                    <option value="3840 X 2160">3840 X 2160</option>
+                    <option value="7680 X 4320">7680 X 4320</option>
                 </select>
             </div>
         </div>
             <div class="form-group row">
                 <label for="feature_display_type" class="col-4 col-form-label">Feature display type</label>
                 <div class="col-8">
-                    <input id="feature_display_type" name="feature_display_type" type="text" class="form-control">
+                    <select id="feature_display_type" name="feature_display_type" class="form-control">
+                        <option value="">Select </option>
+                        <option value="LCD">LCD</option>
+                        <option value="LED">LED</option>
+                        <option value="QLED">QLED</option>
+                        <option value="OLED">OLED</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="feature_display_refreshrate" class="col-4 col-form-label">Feature display refreshrate</label>
                 <div class="col-8">
-                    <input id="feature_display_refreshrate" name="feature_display_refreshrate" type="text" class="form-control">
+                    <select id="feature_display_refreshrate" name="feature_display_refreshrate" class="form-control">
+                        <option value="">Select </option>
+                        <option value="TruMotion 120 (Native 60Hz)">TruMotion 120 (Native 60Hz)</option>
+                        <option value="TruMotion 240 (Native 120Hz">TruMotion 240 (Native 120Hz</option>
+                        <option value="Motion Rate 60">Motion Rate 60</option>
+                        <option value="Motion Rate 120 (Native 60Hz)">Motion Rate 120 (Native 60Hz)</option>
+                        <option value="Motion Rate 240 (Native 120Hz)">Motion Rate 240 (Native 120Hz)</option>
+                        <option value="X-Motion Clarity">X-Motion Clarity</option>
+                        <option value="Motionflow XR">Motionflow XR</option>
+                        <option value="Motionflow XR 960 (Native 120 Hz)">Motionflow XR 960 (Native 120 Hz)</option>
+                        <option value="Motionflow XR 240 (Native 60 Hz)">Motionflow XR 240 (Native 60 Hz)</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="feature_display_backlight" class="col-4 col-form-label">Feature display backlight</label>
                 <div class="col-8">
-                    <input id="feature_display_backlight" name="feature_display_backlight" type="text" class="form-control">
+                    <select id="feature_display_backlight" name="feature_display_backlight" class="form-control">
+                        <option value="">Select </option>
+                        <option value="Direct LED">Direct LED</option>
+                        <option value="Direct (Full Array LED)">Direct (Full Array LED)</option>
+                        <option value="Edge Lit">Edge Lit</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="feature_display_more" class="col-4 col-form-label">Feature display more</label>
+                <label class="col-4">Feature backlight dimming</label>
                 <div class="col-8">
-                    <input id="feature_display_more" name="feature_display_more" type="text" class="form-control">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input name="feature_backlight_dimming" id="feature_backlight_dimming_na" type="radio" class="custom-control-input" value="">
+                        <label for="feature_backlight_dimming_na" class="custom-control-label">N/A</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input name="feature_backlight_dimming" id="feature_backlight_dimming_local" type="radio" class="custom-control-input" value="Local Dimming">
+                        <label for="feature_backlight_dimming_local" class="custom-control-label">Local Dimming</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="series" class="col-4 col-form-label">Series</label>
+                <div class="col-8">
+                    <select id="series" name="series" class="form-control">
+                        <option value="">Select </option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="LS">LS</option>
+                        <option value="B6">B6</option>
+                        <option value="B7">B7</option>
+                        <option value="B8">B8</option>
+                        <option value="B9">B9</option>
+                        <option value="C6">C6</option>
+                        <option value="C7">C7</option>
+                        <option value="C8">C8</option>
+                        <option value="C9">C9</option>
+                        <option value="E6">E6</option>
+                        <option value="E7">E7</option>
+                        <option value="E8">E8</option>
+                        <option value="E9">E9</option>
+                        <option value="W8">W8</option>
+                        <option value="W9">W9</option>
+                        <option value="W600">W600</option>
+                        <option value="X600">X600</option>
+                        <option value="X700">X700</option>
+                        <option value="X800">X800</option>
+                        <option value="X900">X900</option>
+                        <option value="A1">A1</option>
+                        <option value="A8">A8</option>
+                        <option value="A9">A9</option>
+                        <option value="Z9">Z9</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="feature_assistant" class="col-4 col-form-label">Feature assistant</label>
                 <div class="col-8">
-                    <input id="feature_assistant" name="feature_assistant" type="text" class="form-control">
+                    <select id="feature_assistant" name="feature_assistant" class="form-control">
+                        <option value="">Select </option>
+                        <option value="Google">Google</option>
+                        <option value="Alexa">Alexa</option>
+                        <option value="Bixby">Bixby</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="feature_audio" class="col-4 col-form-label">Feature audio</label>
                 <div class="col-8">
-                    <input id="feature_audio" name="feature_audio" type="text" class="form-control">
+                    <select id="feature_audio" name="feature_audio" class="form-control">
+                        <option value="">Select </option>
+                        <option value="2.0 CH">2.0 CH</option>
+                        <option value="2.1 CH">2.1 CH</option>
+                        <option value="2.2 CH">2.2 CH</option>
+                        <option value="4.2 CH">4.2 CH</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="feature_picture" class="col-4 col-form-label">Feature picture</label>
                 <div class="col-8">
-                    <input id="feature_picture" name="feature_picture" type="text" class="form-control">
+                    <select id="feature_picture" name="feature_picture" class="form-control">
+                        <option value="">Select </option>
+                        <option value="Picture Processor X1 Ultimate">Picture Processor X1 Ultimate</option>
+                        <option value="Quad Core Processor">Quad Core Processor</option>
+                        <option value="α7 Gen 2 Intelligent Processor">α7 Gen 2 Intelligent Processor</option>
+                        <option value="α9 Gen 2 Intelligent Processor">α9 Gen 2 Intelligent Processor</option>
+                        <option value="Quantum Processor 4K">Quantum Processor 4K</option>
+                        <option value="Quantum Processor 8K">Quantum Processor 8K</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
@@ -335,15 +421,47 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label for="feature_hdr1" class="col-4 col-form-label">HDR</label>
+                <div class="col-8">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label pr-2" for="feature_hdr1">HDR</label>
+                        <input class="form-check-input" type="checkbox" id="feature_hdr1" name="feature_hdr1" value="HDR">
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label pr-2" for="feature_hdr2">HDR 10</label>
+                        <input class="form-check-input" type="checkbox" id="feature_hdr2" name="feature_hdr2" value="HDR10">
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label pr-2" for="feature_hdr3">HDR 10+</label>
+                        <input class="form-check-input" type="checkbox" id="feature_hdr3" name="feature_hdr3" value="HDR10+">
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label pr-2" for="feature_hdr4">HLG</label>
+                        <input class="form-check-input" type="checkbox" id="feature_hdr4" name="feature_hdr4" value="HLG">
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label pr-2" for="feature_hdr5">Dolby Vision</label>
+                        <input class="form-check-input" type="checkbox" id="feature_hdr5" name="feature_hdr5" value="Dolby Vision">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label for="feature_mounting" class="col-4 col-form-label">Feature mounting</label>
                 <div class="col-8">
                     <input id="feature_mounting" name="feature_mounting" type="text" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="feature_ports" class="col-4 col-form-label">Feature ports</label>
+                <label class="col-4">Feature game mode</label>
                 <div class="col-8">
-                    <input id="feature_ports" name="feature_ports" type="text" class="form-control">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input name="feature_game" id="feature_game_yes" type="radio" class="custom-control-input" value="Yes">
+                        <label for="feature_game_yes" class="custom-control-label">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input name="feature_game" id="feature_game_no" type="radio" class="custom-control-input" value="No">
+                        <label for="feature_game_no" class="custom-control-label">No</label>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
@@ -428,6 +546,7 @@
             })
             // using the done promise callback
                 .done(function(data) {
+                    console.log(data);
                     $('[name=model]').val(data.products[0].model);
                     $('[name=brand]').val(data.products[0].brand);
                     $('[name=category]').val(data.products[0].category);
@@ -443,7 +562,7 @@
                     $('[name=price2]').val(data.products[0].price2);
                     $('[name=price2_start]').val(data.products[0].price2_start);
                     $('[name=price2_end]').val(data.products[0].price2_end);
-                    $('[name=discontinued]').val(data.products[0].discontinued);
+                    $('[name=discontinued][value="' + data.products[0].discontinued + '"]').prop('checked', true);
                     $('[name=size]').val(data.products[0].size);
                     $('[name=technology]').val(data.products[0].technology);
 
@@ -468,16 +587,19 @@
                     $('[name=feature_display_type]').val(data.products[0].feature_display_type);
                     $('[name=feature_display_refreshrate]').val(data.products[0].feature_display_refreshrate);
                     $('[name=feature_display_backlight]').val(data.products[0].feature_display_backlight);
-                    $('[name=feature_display_more]').val(data.products[0].feature_display_more);
+                    $('[name=feature_backlight_dimming][value="' + data.products[0].feature_backlight_dimming + '"]').prop('checked', true);
+                    $('[name=series]').val(data.products[0].series);
                     $('[name=feature_assistant]').val(data.products[0].feature_assistant);
                     $('[name=feature_audio]').val(data.products[0].feature_audio);
                     $('[name=feature_picture]').val(data.products[0].feature_picture);
 
                     var c1 = data.products[0].feature_connectivity.split(" ");
-
                     $('[name=feature_connectivityh]').val(c1[0]);$('[name=feature_connectivityu]').val(c1[1]);$('[name=feature_connectivityb]').val(c1[2]);$('[name=feature_connectivitye]').val(c1[3]);$('[name=feature_connectivityc]').val(c1[4]);
+
+                    getHdr(data.products[0].feature_hdr);
+
                     $('[name=feature_mounting]').val(data.products[0].feature_mounting);
-                    $('[name=feature_ports]').val(data.products[0].feature_ports);
+                    $('[name=feature_game][value="' + data.products[0].feature_game + '"]').prop('checked', true);
                     $('[name=feature_power]').val(data.products[0].feature_power);
                     $('[name=warranty]').val(data.products[0].warranty);
                     $('[name=description]').val(data.products[0].description);
@@ -486,11 +608,44 @@
         }
         console.log(id);
 
+        function getHdr(array) {
+            var bits = array.split(",");
+            if((jQuery.inArray('HDR', bits))>=0){$("#feature_hdr1").prop("checked", true);}else {$("#feature_hdr1").prop("checked", false);}
+            if((jQuery.inArray('HDR10', bits))>=0){$("#feature_hdr2").prop("checked", true);}else {$("#feature_hdr2").prop("checked", false);}
+            if((jQuery.inArray('HDR10+', bits))>=0){$("#feature_hdr3").prop("checked", true);}else {$("#feature_hdr3").prop("checked", false);}
+            if((jQuery.inArray('HLG', bits))>=0){$("#feature_hdr4").prop("checked", true);}else {$("#feature_hdr4").prop("checked", false);}
+            if((jQuery.inArray('Dolby Vision', bits))>=0){$("#feature_hdr5").prop("checked", true);}else {$("#feature_hdr5").prop("checked", false);}
+            console.log(bits);
+            console.log(jQuery.inArray('Dolby Vision', bits));
+        }
 
-        var ress = $('[name=dimension_withstand1]').val() + ' ' + $('[name=dimension_withstand2]').val() + ' ' + $('[name=dimension_withstand3]').val();
-        console.log(ress);
+        function setHdr(){
+            var hdr = "";
+            if($('[name=feature_hdr1]').is(':checked')){hdr += $('[name=feature_hdr1]').val();}
+            if($('[name=feature_hdr2]').is(':checked')){hdr += ',' + $('[name=feature_hdr2]').val();}
+            if($('[name=feature_hdr3]').is(':checked')){hdr += ',' + $('[name=feature_hdr3]').val();}
+            if($('[name=feature_hdr4]').is(':checked')){hdr += ',' + $('[name=feature_hdr4]').val();}
+            if($('[name=feature_hdr5]').is(':checked')){hdr += ',' + $('[name=feature_hdr5]').val();}
+            return hdr;
+        }
+
+
+        function setGame(){
+            var game = "";
+            if($('[name=feature_game]').is(':checked')){game = $('[name=feature_game]:checked').val();}
+            return game;
+        }
+
+        function setDiscontinued(){
+            var discontinued = "";
+            if($('[name=discontinued]').is(':checked')){discontinued = $('[name=discontinued]:checked').val();}
+            return discontinued;
+        }
+
         // process the form
         $('form').submit(function(event) {
+            event.preventDefault();
+            console.log(setHdr());
 
             // get the form data
             var formData = {
@@ -513,7 +668,7 @@
                 'price2' : $('[name=price2]').val(),
                 'price2_start' : $('[name=price2_start]').val(),
                 'price2_end' : $('[name=price2_end]').val(),
-                'discontinued' : $('[name=discontinued]').val(),
+                'discontinued' : setDiscontinued(),
                 'size' : $('[name=size]').val(),
                 'technology' : $('[name=technology]').val(),
                 'dimension_withstand' : $('[name=dimension_withstand1]').val() + ' ' + $('[name=dimension_withstand2]').val() + ' ' + $('[name=dimension_withstand3]').val(),
@@ -528,13 +683,15 @@
                 'feature_display_type' : $('[name=feature_display_type]').val(),
                 'feature_display_refreshrate' : $('[name=feature_display_refreshrate]').val(),
                 'feature_display_backlight' : $('[name=feature_display_backlight]').val(),
-                'feature_display_more' : $('[name=feature_display_more]').val(),
+                'feature_backlight_dimming' : $('[name=feature_backlight_dimming]:checked').val(),
+                'series' : $('[name=series]').val(),
                 'feature_assistant' : $('[name=feature_assistant]').val(),
                 'feature_audio' : $('[name=feature_audio]').val(),
                 'feature_picture' : $('[name=feature_picture]').val(),
                 'feature_connectivity' : $('[name=feature_connectivityh]').val() + ' ' + $('[name=feature_connectivityu]').val() + ' ' + $('[name=feature_connectivityb]').val() + ' ' + $('[name=feature_connectivitye]').val() + ' ' + $('[name=feature_connectivityc]').val(),
+                'feature_hdr' : setHdr(),
                 'feature_mounting' : $('[name=feature_mounting]').val(),
-                'feature_ports' : $('[name=feature_ports]').val(),
+                'feature_game' : setGame(),
                 'feature_power' : $('[name=feature_power]').val(),
                 'warranty' : $('[name=warranty]').val(),
                 'description' : $('[name=description]').val(),

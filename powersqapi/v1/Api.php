@@ -98,13 +98,15 @@ if(isset($_GET['apicall'])){
             $_POST['feature_display_type'] = isset($_POST['feature_display_type']) ? $_POST['feature_display_type'] : '';
             $_POST['feature_display_refreshrate'] = isset($_POST['feature_display_refreshrate']) ? $_POST['feature_display_refreshrate'] : '';
             $_POST['feature_display_backlight'] = isset($_POST['feature_display_backlight']) ? $_POST['feature_display_backlight'] : '';
-            $_POST['feature_display_more'] = isset($_POST['feature_display_more']) ? $_POST['feature_display_more'] : '';
+            $_POST['feature_backlight_dimming'] = isset($_POST['feature_backlight_dimming']) ? $_POST['feature_backlight_dimming'] : '';
+            $_POST['series'] = isset($_POST['series']) ? $_POST['series'] : '';
             $_POST['feature_assistant'] = isset($_POST['feature_assistant']) ? $_POST['feature_assistant'] : '';
             $_POST['feature_audio'] = isset($_POST['feature_audio']) ? $_POST['feature_audio'] : '';
             $_POST['feature_picture'] = isset($_POST['feature_picture']) ? $_POST['feature_picture'] : '';
             $_POST['feature_connectivity'] = isset($_POST['feature_connectivity']) ? $_POST['feature_connectivity'] : '';
+            $_POST['feature_hdr'] = isset($_POST['feature_hdr']) ? $_POST['feature_hdr'] : '';
             $_POST['feature_mounting'] = isset($_POST['feature_mounting']) ? $_POST['feature_mounting'] : '';
-            $_POST['feature_ports'] = isset($_POST['feature_ports']) ? $_POST['feature_ports'] : '';
+            $_POST['feature_game'] = isset($_POST['feature_game']) ? $_POST['feature_game'] : '';
             $_POST['feature_power'] = isset($_POST['feature_power']) ? $_POST['feature_power'] : '';
             $_POST['warranty'] = isset($_POST['warranty']) ? $_POST['warranty'] : '';
             $_POST['description'] = isset($_POST['description']) ? $_POST['description'] : '';
@@ -142,13 +144,15 @@ if(isset($_GET['apicall'])){
                 $_POST['feature_display_type'],
                 $_POST['feature_display_refreshrate'],
                 $_POST['feature_display_backlight'],
-                $_POST['feature_display_more'],
+                $_POST['feature_backlight_dimming'],
+                $_POST['series'],
                 $_POST['feature_assistant'],
                 $_POST['feature_audio'],
                 $_POST['feature_picture'],
                 $_POST['feature_connectivity'],
+                $_POST['feature_hdr'],
                 $_POST['feature_mounting'],
-                $_POST['feature_ports'],
+                $_POST['feature_game'],
                 $_POST['feature_power'],
                 $_POST['warranty'],
                 $_POST['description']
@@ -241,13 +245,15 @@ if(isset($_GET['apicall'])){
                 $_POST['feature_display_type'],
                 $_POST['feature_display_refreshrate'],
                 $_POST['feature_display_backlight'],
-                $_POST['feature_display_more'],
+                $_POST['feature_backlight_dimming'],
+                $_POST['series'],
                 $_POST['feature_assistant'],
                 $_POST['feature_audio'],
                 $_POST['feature_picture'],
                 $_POST['feature_connectivity'],
+                $_POST['feature_hdr'],
                 $_POST['feature_mounting'],
-                $_POST['feature_ports'],
+                $_POST['feature_game'],
                 $_POST['feature_power'],
                 $_POST['warranty'],
                 $_POST['description']
@@ -293,10 +299,13 @@ if(isset($_GET['apicall'])){
 
 //displaying the response in json structure
 
-function convert_before_json(&$item, $key)
+/*function convert_before_json(&$item, $key)
 {
     $item = utf8_encode($item);
 }
 
-array_walk_recursive($response, "convert_before_json");
+array_walk_recursive($response, "convert_before_json");*/
+
+array_walk_recursive($response,function(&$item){$item=strval($item);});
+
 echo json_encode($response);
